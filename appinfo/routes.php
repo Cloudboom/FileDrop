@@ -10,7 +10,7 @@
 return [
     'routes' => [
 	   ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-       ['name' => 'mail#processUpload', 'url' => '/verarbeitung', 'verb' => 'POST'],  //von Mir.
-       ['name' => 'page#success', 'url' => '/success', 'verb' => 'GET'], //von Mir
+       ['name' => 'mail#processUpload', 'url' => '/verarbeitung', 'verb' => 'POST'], 
+     //  ['name' => 'page#success', 'url' => '/success', 'verb' => 'GET'], 
     ]
 ];
