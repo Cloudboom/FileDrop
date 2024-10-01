@@ -1,6 +1,6 @@
 <?php
-//script('cload', 'passwordcheck');
-style('cload', 'style');
+//script('filedrop', 'passwordcheck');
+style('filedrop', 'style');
 ?>
 
 <div id="app">

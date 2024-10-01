@@ -1,6 +1,6 @@
 <?php
-script('cload', 'script');
-style('cload', 'style');
+script('filedrop', 'script');
+style('filedrop', 'style');
 ?>
 
 <div id="app">

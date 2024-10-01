@@ -2,7 +2,7 @@
 <info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
 	<id>filedrop</id>
-	<name>Filedrop</name>
+	<name>FileDrop</name>
 	<summary>Drop files and send them per mail</summary>
 	<description>This app will provide a graphical interface to share files with other persons via email. It gives the option to fill out all necessary email template information and will place the file in a dedicated folder inside your nextcloud afterwards.</description>
 	<version>1.0.0</version>

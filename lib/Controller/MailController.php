@@ -1,5 +1,5 @@
 <?php
-namespace OCA\CLoad\Controller;
+namespace OCA\FileDrop\Controller;
 
 //@see https://docs.nextcloud.com/server/14/developer_manual/api/OCP/IRequest.html
 use OCP\IRequest; 
@@ -103,39 +103,39 @@ class MailController extends Controller {
 		//hinzufügen von Errormeldungen zur Ausgabe.
 		$outputArray['error'] = '';
 		// aufrufen von templates/successs.php
-		return new TemplateResponse('cload', 'success', $outputArray);  
+		return new TemplateResponse('filedrop', 'success', $outputArray);  
 	}
 
 	/**
-	* Prüft ob der Ordner cLoad schon in der Ablage vorhanden ist
+	* Prüft ob der Ordner FileDrop schon in der Ablage vorhanden ist
 	*/
 	private function prepareUploadEnvironment(){
 		$userFolder = \OC::$server->getUserFolder();
 		//holendes Pfades zum Homedir 
 		$userFolder->getPath();
-		//prüfen ob schon ein cLoad-Ordner angelegt ist
-		if (! $userFolder->nodeExists('cLoad')){ 
-			$userFolder->newFolder('cLoad');
+		//prüfen ob schon ein FileDrop-Ordner angelegt ist
+		if (! $userFolder->nodeExists('FileDrop')){ 
+			$userFolder->newFolder('FileDrop');
 		}
 		//generieren des Unix-Timestamps
 		$timestamp = $this->timeFactory->getTime(); 
-		$uploadFolder = $userFolder->newFolder('cLoad/' . $timestamp);
+		$uploadFolder = $userFolder->newFolder('FileDrop/' . $timestamp);
 		return $uploadFolder;
 	}
 
 	/**
-	* Prüft ob das Tag cLoad_retention vorhanden ist und fügt es der Datei oder dem Ordner an
+	* Prüft ob das Tag FileDrop_retention vorhanden ist und fügt es der Datei oder dem Ordner an
 	*/
 	private function addRetentionTag($uploadFolder){  
 		try{
-			//holen der Daten des Tags cLoad_retention; false, false für nicht sichtbar und nicht änderbar
-			$tag = $this->tagManager->getTag('cLoad_retention', false, false);
+			//holen der Daten des Tags FileDrop_retention; false, false für nicht sichtbar und nicht änderbar
+			$tag = $this->tagManager->getTag('FileDrop_retention', false, false);
 			//dem übergebenen Ordner oder File das Tag hinzufügen
 			$this->objectMapper->assignTags((string) $uploadFolder->getId(),'files',$tag->getId());
 		}
 		catch (TagNotFoundException $e) {
 			//ablager der Exception im Log
-			$this->logger->logException($e, ['app' => 'cLoad', 'message' => 'no Tag']); 
+			$this->logger->logException($e, ['app' => 'FileDrop', 'message' => 'no Tag']); 
 			return false;
 		}
 		return true;
@@ -151,7 +151,7 @@ class MailController extends Controller {
 		if (count($files['data']['name']) == 1 && $files['data']['name'][0] == '') { 
 			$noData = 'keine Datei ausgewählt';
 			//ablagern der Exception im Log
-			$this->logger->info($noData, ['app' => 'cLoad']);
+			$this->logger->info($noData, ['app' => 'FileDrop']);
 		}
 		else{
 			//für jede angegebene Datei
@@ -205,7 +205,7 @@ class MailController extends Controller {
 			$fromEmail = $this->getUser()->getEMailAddress(); 
 		if (!$fromEmail) {
 			//vergabe der standard E-Mail wenn keine E-Mail hinerlegt war
-			$fromEmail = 'cLoad@stadt-koeln.de'; 
+			$fromEmail = 'filedrop@no-reply.com'; 
 		}
 		$emailTemplate = $this->buildEmailTemplate($link, $countedFiles, $fromEmail);
 		//splitten der Mails nach , und ;
@@ -241,7 +241,7 @@ class MailController extends Controller {
 			}
 		} 
 		catch (\Exception $e) {
-			$this->logger->logException($e, ['app' => 'cLoad']);
+			$this->logger->logException($e, ['app' => 'FileDrop']);
 		}
 		//füllen eines return Arrays für die Abschlusseite
 		$returnArray = ['validEmails' => $validEmails, 'invalidEmails' => $invalidEmails]; 	
@@ -269,24 +269,24 @@ class MailController extends Controller {
 
 		//für eine Datei
 		if ($countedFiles === 1){ 
-			$filledTemplate = $this->mailer->createEMailTemplate('cLoad.Sendlink');
+			$filledTemplate = $this->mailer->createEMailTemplate('FileDrop.Sendlink');
 			$filledTemplate->addHeader();
 			//durch '' wird der erste Parameter auch für Textmail genutzt
-			$filledTemplate->addHeading($fromEmail . ' hat für Sie eine Datei über cLoad bereitgestellt.',''); 
+			$filledTemplate->addHeading($fromEmail . ' hat für Sie eine Datei über FileDrop bereitgestellt.',''); 
 			$filledTemplate->addBodyText(htmlspecialchars('Es wurde folgende Nachricht für Sie hinterlassen:'), 'Für Sie wurde folgende Nachricht hinterlassen:');
 			$filledTemplate->addBodyText(htmlspecialchars($message), $message);
 			$filledTemplate->addBodyButton('Zu Ihrer Datei', $link,'');
-			$filledTemplate->addFooter('Mit freundlichen Grüßen'. "<br/>" . 'Ihr cLoad-Service' );
+			$filledTemplate->addFooter('Mit freundlichen Grüßen'. "<br/>" . 'Ihr FileDrop-Service' );
 		}
 		// für mehrere Dateien
 		else{ 
-			$filledTemplate = $this->mailer->createEMailTemplate('cLoad.Sendlink');
+			$filledTemplate = $this->mailer->createEMailTemplate('FileDrop.Sendlink');
 			$filledTemplate->addHeader();
-			$filledTemplate->addHeading($fromEmail . ' hat für Sie mehrere Dateien über cLoad bereitgestellt.',''); 
+			$filledTemplate->addHeading($fromEmail . ' hat für Sie mehrere Dateien über FileDrop bereitgestellt.',''); 
 			$filledTemplate->addBodyText(htmlspecialchars('Es wurde folgende Nachricht für Sie hinterlassen:'), 'Für Sie wurde folgende Nachricht hinterlassen:');
 			$filledTemplate->addBodyText(htmlspecialchars($message), $message);
 			$filledTemplate->addBodyButton('Zu Ihren Dateien', $link,'');
-			$filledTemplate->addFooter('Mit freundlichen Grüßen'. "<br/>" . 'Ihr cLoad-Service' );
+			$filledTemplate->addFooter('Mit freundlichen Grüßen'. "<br/>" . 'Ihr FileDrop-Service' );
 		}
 		return $filledTemplate;
 	}	
