@@ -1,0 +1,126 @@
+#hello {
+	color: red;
+}
+
+div.gui{
+width: 100%;
+}
+
+#app{
+	width: 100%;
+}
+
+#app-content{
+	width: 100%;
+}
+
+div.all{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+div.headline > h1 {
+ font-size: 18pt;
+ margin-left: 15%;
+ font-weight: bold;
+}
+
+div.headline2 > h2 {
+	font-size: 30pt;
+	margin-left: 15%;
+	margin-top: 5%
+	
+   }
+
+   div.check{
+	margin-left: 15%;
+   }
+
+div.invalid{
+	width: 70%;
+	background-color: #f1b3b5;
+	border-radius: 3px;
+	padding-left: 5px;
+	box-sizing: border-box;
+	margin-left: 15%;
+	margin-top: 2%
+}
+
+div.valid{
+	width: 70%;
+	background-color: rgb(212, 243, 200);
+	border-radius: 3px;
+	padding-left: 5px;
+	box-sizing: border-box;
+	margin-left: 15%;
+	margin-top: 2%
+}
+
+div.errors{
+	width: 70%;
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 3px;
+	padding-left: 5px;
+	box-sizing: border-box;
+	margin-left: 15%;
+	margin-top: 2%
+}
+
+/* Textfelder */
+input[type=text], select {
+	width: 70%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+	margin-left: 15%;
+  }
+
+  /* Textfeld Groß */
+input[type=text], textarea {
+	width: 70%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+	margin-left: 15%;
+  }
+
+    /* Passwort */
+input[type=password] {
+	width: 30%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+	margin-left: 15%;
+}
+
+  /* Button  */
+input[type=submit] {
+	background-color: #ed1c24;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	float: right;
+	margin-right: 15%;
+	}
+	
+	  /* Datei Upload  */
+input[type=file] {
+	width: 70%;
+	margin-left: 15%;
+	}
+
+	label {
+	margin-left: 15%;
+	font-weight: bold;
+	}
+	
