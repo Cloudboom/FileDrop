@@ -15,17 +15,25 @@ use OCP\AppFramework\OCSController;
  */
 class ApiController extends OCSController {
 	/**
-	 * An example API endpoint
+	 * Returns app health information for the modernized baseline.
 	 *
-	 * @return DataResponse<Http::STATUS_OK, array{message: string}, array{}>
+	 * @return DataResponse<Http::STATUS_OK, array{app: string, status: string, supportedNextcloudVersions: list<string>, missingFeatures: list<string>}, array{}>
 	 *
-	 * 200: Data returned
+	 * 200: Health data returned
 	 */
 	#[NoAdminRequired]
 	#[ApiRoute(verb: 'GET', url: '/api')]
 	public function index(): DataResponse {
 		return new DataResponse(
-			['message' => 'Hello world!']
+			[
+				'app' => 'filedrop',
+				'status' => 'baseline-ready',
+				'supportedNextcloudVersions' => ['31', '32', '33'],
+				'missingFeatures' => [
+					'legacy-upload-flow',
+					'mail-delivery-workflow',
+				],
+			]
 		);
 	}
 }

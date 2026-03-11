@@ -3,16 +3,16 @@
 	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
 	<id>filedrop</id>
 	<name>File Drop</name>
-	<summary>Drop files and send them per mail</summary>
-	<description>This app will provide a graphical interface to share files with other persons via email. It gives the option to fill out all necessary email template information and will place the file in a dedicated folder inside your nextcloud afterwards.</description>
-	<version>1.0.0</version>
+	<summary>Modernized baseline for the File Drop app</summary>
+	<description>This release updates the legacy repository to a current Nextcloud app baseline so the original upload and sharing workflow can be rebuilt cleanly.</description>
+	<version>2.0.0</version>
 	<licence>agpl</licence>
 	<author mail="github@bderigs.de" homepage="">Bastian Derigs</author>
 	<namespace>FileDrop</namespace>
 	<category>files</category>
 	<bugs>https://github.com/Cloudboom/FileDrop/issues</bugs>
 	<dependencies>
-		<nextcloud min-version="29" max-version="29"/>
+		<nextcloud min-version="31" max-version="33"/>
 	</dependencies>
 	<navigations>
 		<navigation>

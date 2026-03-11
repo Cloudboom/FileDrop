@@ -1,25 +1,25 @@
 # File Drop
 
-A template to get started with Nextcloud app development.
+Modernized baseline for a Nextcloud app that originally aimed to upload files and share them by email.
 
-## Usage
+## Current state
 
-- To get started easily use the [Appstore App generator](https://apps.nextcloud.com/developer/apps/generate) to
-  dynamically generate an App based on this repository with all the constants prefilled.
-- Alternatively you can use the "Use this template" button on the top of this page to create a new repository based on
-  this repository. Afterwards adjust all the necessary constants like App ID, namespace, descriptions etc.
+- Supports Nextcloud 31 to 33
+- Uses a Vue 3 frontend with current `@nextcloud/vue` import paths
+- Uses attribute-based routing and a small OCS health endpoint
+- Removes the broken legacy HTML form that referenced controllers no longer present in the repository
 
-Once your app is ready follow the [instructions](https://nextcloudappstore.readthedocs.io/en/latest/developer.html) to
-upload it to the Appstore.
+## Remaining work
+
+The original upload, storage, and mail-sharing workflow is not present in this repository anymore. Rebuilding that feature now has to happen on top of the cleaned-up baseline in this branch.
+
+## Development
+
+- `composer install`
+- `npm install`
+- `npm run build`
 
 ## Resources
 
-### Documentation for developers:
-
-- General documentation and tutorials: https://nextcloud.com/developer
-- Technical documentation: https://docs.nextcloud.com/server/latest/developer_manual
-
-### Help for developers:
-
-- Official community chat: https://cloud.nextcloud.com/call/xs25tz5y
-- Official community forum: https://help.nextcloud.com/c/dev/11
+- [Nextcloud developer manual](https://docs.nextcloud.com/server/latest/developer_manual/)
+- [Nextcloud app store publishing guide](https://nextcloudappstore.readthedocs.io/en/latest/developer.html)

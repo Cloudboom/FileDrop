@@ -1,15 +1,16 @@
 {
   "name": "filedrop",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "AGPL-3.0-or-later",
   "engines": {
     "node": "^20.0.0",
     "npm": "^10.0.0"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --config webpack.js --progress",
-    "dev": "NODE_ENV=development webpack --config webpack.js --progress",
-    "watch": "NODE_ENV=development webpack --config webpack.js --progress --watch",
+    "build": "webpack --node-env production --config webpack.js --progress",
+    "dev": "webpack --node-env development --config webpack.js --progress",
+    "watch": "webpack --node-env development --config webpack.js --progress --watch",
+    "serve": "webpack serve --node-env development --config webpack.js --progress",
     "lint": "eslint src",
     "stylelint": "stylelint src/**/*.vue src/**/*.scss src/**/*.css"
   },
@@ -17,14 +18,14 @@
     "extends @nextcloud/browserslist-config"
   ],
   "dependencies": {
-    "@nextcloud/vue": "^8.11.2",
-    "vue": "^2.7.16"
+    "@nextcloud/vue": "^9.0.0",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@nextcloud/browserslist-config": "^3.0.1",
-    "@nextcloud/eslint-config": "^8.3.0",
-    "@nextcloud/stylelint-config": "^2.4.0",
-    "@nextcloud/webpack-vue-config": "^6.0.1",
+    "@nextcloud/eslint-config": "^8.4.2",
+    "@nextcloud/stylelint-config": "^3.1.0",
+    "@nextcloud/webpack-vue-config": "^6.3.0",
     "eslint-webpack-plugin": "^4.1.0",
     "stylelint-webpack-plugin": "^5.0.0"
   }

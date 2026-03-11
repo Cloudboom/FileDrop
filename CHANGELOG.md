@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+### Changed
 
-- First release
+- Modernized the app baseline for current Nextcloud releases
+- Migrated the frontend entrypoint from Vue 2 to Vue 3
+- Removed the broken legacy template form and dead route references
+- Updated compatibility metadata to Nextcloud 31 to 33
